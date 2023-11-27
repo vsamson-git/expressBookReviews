@@ -19,27 +19,27 @@ public_users.post("/register", (req,res) => {
 });
 
 // Get the book list available in the shop
-public_users.get('/',function (req, res) {
+public_users.get('/',async function (req, res) {
   //Write your code here
-  return res.send(JSON.stringify(books, null, 4));
+  return res.send(await JSON.stringify(books, null, 4));
 });
 
 // Get book details based on ISBN
-public_users.get('/isbn/:isbn',function (req, res) {
+public_users.get('/isbn/:isbn', async function (req, res) {
   //Write your code here
-  return res.send(books[req.params.isbn]);
+  return res.send(await books[req.params.isbn]);
  });
   
 // Get book details based on author
-public_users.get('/author/:author',function (req, res) {
+public_users.get('/author/:author',async function (req, res) {
   //Write your code here
-  return res.send(Object.values(books).filter(book => book.author == req.params.author));
+  return res.send(await Object.values(books).filter(book => book.author == req.params.author));
 });
 
 // Get all books based on title
-public_users.get('/title/:title',function (req, res) {
+public_users.get('/title/:title', async function (req, res) {
   //Write your code here
-  return res.send(Object.values(books).filter(book => book.title == req.params.title));
+  return res.send(await Object.values(books).filter(book => book.title == req.params.title));
 });
 
 //  Get book review
